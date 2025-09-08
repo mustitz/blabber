@@ -12,7 +12,21 @@ that your program works correctly according to a formal specification.
 In an ideal world, this should make unit tests and QA... unnecessary,
 at least for those parts of the system that are formally verified.
 Is this really as cool as it sounds?
-That's for you to decide, and I'll try in this article to simply explain how it works.
+
+To understand this, let's first look at the hierarchy of verification methods.
+The aviation standard DO-178C defines safety levels depending on code criticality:
+
+| Level | Name | Failure Impact Description | Verification Requirements |
+|-------|------|----------------------------|---------------------------|
+| E | No Effect | No impact on aircraft safety | Testing is optional |
+| D | Minor | Minor inconvenience to crew | Basic unit tests<br>Code review |
+| C | Major | Serious problems but no threat to life | 100% code coverage<br>Integration tests<br>Manual QA |
+| B | Hazardous | Possible injuries to passengers or crew | Static analysis<br>Property-based testing<br>Fuzzing |
+| A | Catastrophic | Threat to life or catastrophe | **Formal verification**<br>Mathematical proof of correctness |
+
+You can see that formal verification stands at the top of the pyramid, the highest level of code safety that can be achieved!
+Whether you should use it in your projects is up to you,
+my task is only to explain how it works.
 
 There's a great resource called Software Foundations dedicated to formal methods for program verification.
 It has Volume 5 dedicated specifically to formal verification of C code.
