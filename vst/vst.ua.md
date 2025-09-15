@@ -382,6 +382,29 @@ Qed.
 Єдина проблема була знайти інваріант.
 І то для даного прикладу він був досить очевидним,
 але в інших більш практичних випадках це може бути справжнім викликом.
+
+Візьмемо у якості більш неочевидного прикладу відому задачу реверсу списку:
+
+```c
+struct node* reverse(struct node* list) {
+    struct node* result = NULL;
+    struct node* remaining = list;
+
+    while (remaining != NULL) {
+        struct node* current = remaining;
+        remaining = remaining->next;
+        current->next = result;
+        result = current;
+    }
+
+    return result;
+}
+```
+
+То тут інваріантом буде `reverse(result) ++ remaining == list`.
+По виходу з циклу `remaining` буде пустим, тому отримаємо `reverse(result) == list`.
+Бачимо, що формула досить неочевидна, і автоматично не може бути отримана, знаходити інваріант це творча робота розробника.
+
 Тут цікаво провести паралелі з іншим методом верифікації, який реалізований у SPARK (Ada).
 Подивимося на приклад
 

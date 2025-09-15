@@ -382,6 +382,29 @@ The proof was, in principle, quite straightforward.
 The only problem was finding the invariant.
 And even for this example it was quite obvious,
 but in other more practical cases this can be a real challenge.
+
+Let's take as a more non-obvious example the well-known list reversal problem:
+
+```c
+struct node* reverse(struct node* list) {
+    struct node* result = NULL;
+    struct node* remaining = list;
+
+    while (remaining != NULL) {
+        struct node* current = remaining;
+        remaining = remaining->next;
+        current->next = result;
+        result = current;
+    }
+
+    return result;
+}
+```
+
+Here the invariant would be `reverse(result) ++ remaining == list`.
+Upon loop exit `remaining` will be empty, so we get `reverse(result) == list`.
+We can see that the formula is quite non-obvious, and cannot be obtained automatically, finding it is the creative work of the developer.
+
 It's interesting to draw parallels here with another verification method implemented in SPARK (Ada).
 Let's look at an example
 
