@@ -432,6 +432,18 @@ The only difference is that if invariants don't help, nothing can be done.
 And in case of Coq we can (actually must) prove any lemma manually, if it can be mathematically proven at all.
 Well, if you have enough skill and patience.
 
+In our example we wrote the function twice:
+once in the ideal world in Coq,
+and once in the brutal world of C programming,
+and then proved equivalence.
+Is it always necessary to do the work twice?
+No, it's not mandatory.
+For example, for sorting verification it's enough to prove two properties:
+for any element its count will not change,
+and each element is not greater than the next one.
+Such properties leave no other options:
+the function either sorts or fails verification.
+
 So what does Coq give us?
 First, the semantics of the C programming language is formally described there.
 Since C is simple as a shovel, this is a task that, although complex, is manageable as we can see.
