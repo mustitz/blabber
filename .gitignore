@@ -2,3 +2,6 @@
 .*.swo
 
 *.agdai
+
+CLAUDE.*
+GEMINI.*
