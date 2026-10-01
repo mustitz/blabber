@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[ukrainian]{babel}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  node distance=1.2cm and 1.2cm,
+  box/.style={draw, rectangle, minimum width=2.4cm, minimum height=0.9cm, font=\ttfamily\small},
+  gen/.style={-{Triangle[open, length=3mm, width=3mm]}, thick}
+]
+
+\node[box] (Race) {Race};
+\node[box, below=1.2cm of Race, xshift=-1.5cm] (Civ) {Civilized};
+\node[box, below=1.2cm of Race, xshift=1.5cm] (Sav) {Savage};
+\node[above=0.1cm of Race] (Formula) {\texttt{Race} $=$ \texttt{Civilized} $+$ \texttt{Savage}};
+
+\draw[gen] (Civ) -- (Race);
+\draw[gen] (Sav) -- (Race);
+
+\end{tikzpicture}
+
+\end{document}
